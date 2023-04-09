@@ -1,0 +1,35 @@
+.root{
+    display: flex;
+    gap:40px;
+    width: 750px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    font-size: 16px;
+    white-space: nowrap;
+    color:var(--non-active);
+    border-bottom: 1px solid var(--non-active);
+    text-align: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media screen and (max-width: 1450px) {
+        &{
+            width: 470px;
+        }
+    }
+}
+
+.tab{   
+    transition: all 0.2s;
+
+    &.active{
+        border-bottom: 4.5px solid var(--green);
+        font-weight: 700;
+        color:var(--dark-blue);
+    }
+}

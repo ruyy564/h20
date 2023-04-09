@@ -1,0 +1,31 @@
+.root{
+    margin-left: 37px;
+    display: flex;
+    align-items: center;
+    gap:23px;
+    cursor: pointer;
+    width:360px;
+
+    @media screen and (max-width: 1450px) {
+        &{
+            min-width:240px;
+            width:240px;
+
+        }
+    }
+}
+
+.info{
+    width: 100%;
+}
+
+.name{
+    font-weight: 700;
+    font-size: 16px;
+    color:var(--dark-blue)
+}
+
+.role{
+    font-size: 14px;
+    color: var(--gray-blue);
+}

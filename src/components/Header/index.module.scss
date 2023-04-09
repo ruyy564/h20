@@ -1,0 +1,28 @@
+.root{
+    position: absolute;
+    display: flex;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    border-radius: 56px;
+    padding:49px 38px;
+}
+
+.btn_group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:8px;
+}
+
+.wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height:40px;
+}
+
+.tabs{
+    display: flex;
+    gap:40px;
+}
