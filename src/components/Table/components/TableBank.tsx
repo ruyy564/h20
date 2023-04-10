@@ -8,7 +8,13 @@ import {
 
 import styles from '../index.module.scss';
 
-function TableBank({ data, sortHandler, sort }: TabelDataProps) {
+function TableBank({
+  data,
+  sortHandler,
+  sort,
+  isEdit,
+  changeHandler,
+}: TabelDataProps) {
   return (
     <table>
       <thead>
@@ -31,6 +37,32 @@ function TableBank({ data, sortHandler, sort }: TabelDataProps) {
       <tbody>
         {data &&
           data.map((item) => {
+            if (isEdit) {
+              return (
+                <tr key={getContactId(item)}>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="bank"
+                      name="name"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactBankName(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="bank"
+                      name="card"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactBankCard(item)}
+                    />
+                  </td>
+                </tr>
+              );
+            }
             return (
               <tr key={getContactId(item)}>
                 <td>{getContactBankName(item)}</td>

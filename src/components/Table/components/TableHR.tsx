@@ -13,7 +13,13 @@ import {
 
 import styles from '../index.module.scss';
 
-function TableHR({ data, sortHandler, sort }: TabelDataProps) {
+function TableHR({
+  data,
+  sortHandler,
+  sort,
+  isEdit,
+  changeHandler,
+}: TabelDataProps) {
   return (
     <table>
       <thead>
@@ -52,6 +58,72 @@ function TableHR({ data, sortHandler, sort }: TabelDataProps) {
       <tbody>
         {data &&
           data.map((item) => {
+            if (isEdit) {
+              return (
+                <tr key={getContactId(item)}>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="hrInfo"
+                      name="post"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactHrInfoPost(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="hrInfo"
+                      name="division"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactHrInfoDivision(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="hrInfo"
+                      name="solution"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactHrInfoSolution(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="hrInfo"
+                      name="source"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactHrInfoSource(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="hrInfo"
+                      name="date"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactHrInfoDate(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="hrInfo"
+                      name="note"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactHrInfoNote(item)}
+                    />
+                  </td>
+                </tr>
+              );
+            }
             return (
               <tr key={getContactId(item)}>
                 <td>{getContactHrInfoPost(item)}</td>

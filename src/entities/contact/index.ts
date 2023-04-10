@@ -1,9 +1,9 @@
-type Bank = {
+export type Bank = {
   name: string;
   card: string;
 };
 
-type Document = {
+export type Document = {
   citizenship: string;
   passport: string;
   issued: string;
@@ -17,7 +17,7 @@ type Document = {
   medicalBook: string;
 };
 
-type HRInfo = {
+export type HRInfo = {
   post: string;
   division: string;
   solution: string;

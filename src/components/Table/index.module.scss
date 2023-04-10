@@ -45,7 +45,8 @@ table{
     display:block;
 
     & td input{
-        width:100%;
+        min-width:80px;
+        width: 100%;
         border-bottom: 1.5px solid var(--light-blue);
     }
 

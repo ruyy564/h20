@@ -11,7 +11,13 @@ import {
 
 import styles from '../index.module.scss';
 
-function TableInfo({ data, sort, isEdit, sortHandler }: TabelDataProps) {
+function TableInfo({
+  data,
+  sort,
+  isEdit,
+  sortHandler,
+  changeHandler,
+}: TabelDataProps) {
   return (
     <table>
       <thead>
@@ -48,11 +54,51 @@ function TableInfo({ data, sort, isEdit, sortHandler }: TabelDataProps) {
               return (
                 <tr key={getContactId(item)}>
                   <td>{getContactId(item)}</td>
-                  <td>{getContactPhone(item)}</td>
-                  <td>{getContactGender(item)}</td>
-                  <td>{getContactBirthday(item)}</td>
-                  <td>{getContactMetro(item)}</td>
-                  <td>{getContactAdress(item)}</td>
+                  <td>
+                    <input
+                      type="text"
+                      name="phone"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactPhone(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="gender"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactGender(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="birthday"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactBirthday(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="metro"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactMetro(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="adress"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactAdress(item)}
+                    />
+                  </td>
                 </tr>
               );
             }

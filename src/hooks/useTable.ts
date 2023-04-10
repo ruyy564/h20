@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import makeOrderASC from '../helpers/makeOrderASC';
 import makeOrderDESC from '../helpers/makeOrderDESC';
 import { ORDER } from '../constants';
-import { Contact } from '../entities/contact';
+import { Contact, Bank, Document, HRInfo } from '../entities/contact';
 import { getContactId } from '../entities/contact/getters';
 import { Styles } from '../constants';
 
@@ -65,11 +65,22 @@ const useTable = ({
     e: React.ChangeEvent<HTMLInputElement>,
     item: Contact
   ) => {
+    const main = e.currentTarget.getAttribute('data-main') as keyof Contact;
+
     setEditData(
       (prev) =>
         prev &&
         prev.map((el) => {
           if (el.id === getContactId(item)) {
+            if (main) {
+              const mainElem = el[main] as Bank | Document | HRInfo;
+
+              return {
+                ...el,
+                [main]: { ...mainElem, [e.target.name]: e.target.value },
+              };
+            }
+
             return {
               ...el,
               [e.target.name]: e.target.value,

@@ -18,7 +18,13 @@ import formatDate from '../../../helpers/formatDate';
 
 import styles from '../index.module.scss';
 
-function TableDocument({ data, sortHandler, sort }: TabelDataProps) {
+function TableDocument({
+  data,
+  sortHandler,
+  sort,
+  isEdit,
+  changeHandler,
+}: TabelDataProps) {
   const currentDay = new Date();
 
   return (
@@ -59,6 +65,122 @@ function TableDocument({ data, sortHandler, sort }: TabelDataProps) {
       <tbody>
         {data &&
           data.map((item) => {
+            if (isEdit) {
+              return (
+                <tr key={getContactId(item)}>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="documents"
+                      name="citizenship"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactDocumentsCitizenship(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="documents"
+                      name="passport"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactDocumentsPassport(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="documents"
+                      name="registration"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactDocumentsRegistration(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="documents"
+                      name="validityPeriodPassport"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactDocumentsValidityPeriodPassport(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="documents"
+                      name="placeOfBirth"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactDocumentsPlaceOfBirth(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="documents"
+                      name="issued"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactDocumentsIssued(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="documents"
+                      name="patent"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactDocumentsPatent(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="documents"
+                      name="validityPeriodPatent"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactDocumentsValidityPeriodPatent(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="documents"
+                      name="snils"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactDocumentsSnils(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="documents"
+                      name="inn"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactDocumentsInn(item)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      data-main="documents"
+                      name="medicalBook"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactDocumentsMedicalBook(item)}
+                    />
+                  </td>
+                </tr>
+              );
+            }
             return (
               <tr key={getContactId(item)}>
                 <td>
