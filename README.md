@@ -1,5 +1,10 @@
 # Страница "Общая база сотрудников"
 
+<div >
+  <img src="https://user-images.githubusercontent.com/87094243/230926625-df875916-4fb6-44e4-98b2-e5c263ca19f2.png" width="300" height="150">
+</div>
+
+
 ## Приложение доступно по адресу
 
 https://ruyy564.github.io/h20/
