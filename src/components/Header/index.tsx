@@ -11,7 +11,7 @@ import {
   ROUTE_TO_DIAGRAMM,
   ROUTE_TO_INFO,
   ROUTE_TO_SETTINGS,
-} from '../../Router/constants';
+} from '../../route/constants';
 import UserTab from '../UserTab';
 
 import styles from './index.module.scss';

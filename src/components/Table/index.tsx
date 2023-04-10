@@ -1,174 +1,109 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Pagination from '../Pagination';
+import { Contact } from '../../entities/contact';
+import { ORDER, STATUS } from '../../constants';
+import TableFooter from './components/TableFooter';
+import TableBank from './components/TableBank';
+import TableDocument from './components/TableDocument';
+import TableInfo from './components/TableInfo';
+import TableHR from './components/TableHR';
+import TableEmployee from './components/TableEmployee';
+import makeOrderASC from './helpers/makeOrderASC';
+import makeOrderDESC from './helpers/makeOrderDESC';
 
 import styles from './index.module.scss';
 
-function Table() {
-  const [currentPage, setCurrentPage] = useState(7);
+type Props = {
+  contacts: Contact[] | null;
+  status: STATUS | null;
+  errorMessage: string | null;
+  count: number;
+  search: string;
+  fetchContacts: (
+    page: number,
+    limit: number,
+    sort: string,
+    order: string,
+    q: string
+  ) => void;
+};
+
+export type TabelDataProps = {
+  data: Contact[] | null;
+  sort: string;
+  sortHandler: (
+    e: React.MouseEvent<HTMLTableHeaderCellElement, MouseEvent>
+  ) => void;
+};
+
+function Table({
+  contacts,
+  search,
+  status,
+  errorMessage,
+  count,
+  fetchContacts,
+}: Props) {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [limit, setLimit] = useState(5);
+  const [sort, setSort] = useState('');
+  const [order, setOrder] = useState(ORDER.ASC);
+
+  useEffect(() => {
+    fetchContacts(currentPage + 1, limit, sort, order, search);
+  }, [limit, currentPage, sort, order, fetchContacts, search]);
+
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [limit]);
+
+  if (count === 0) {
+    return <div>Нет контактов</div>;
+  }
+
+  const sortHandler = (e: React.MouseEvent) => {
+    const elem = e.currentTarget;
+    const valueSort = elem.getAttribute('data-sorting');
+    const isSortASC = elem.classList.contains(styles.is_sortASC);
+
+    if (sort === valueSort) {
+      if (isSortASC) {
+        setOrder(ORDER.DESC);
+        makeOrderDESC(elem);
+      } else {
+        setOrder(ORDER.ASC);
+        makeOrderASC(elem);
+      }
+    } else {
+      setSort(valueSort || '');
+      setOrder(ORDER.DESC);
+      makeOrderDESC(elem);
+    }
+  };
 
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
-        <table className={styles.table_employee}>
-          <thead>
-            <tr>
-              <th rowSpan={2}>№</th>
-              <th rowSpan={2}>Имя сотрудника</th>
-              <th>&nbsp;</th>
-            </tr>
-            <tr>
-              <th>&nbsp;</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>№</td>
-              <td>Имя сотрудника</td>
-            </tr>
-            <tr>
-              <td>№</td>
-              <td>Имя сотрудника</td>
-            </tr>
-          </tbody>
-        </table>
+        <TableEmployee data={contacts} sortHandler={sortHandler} sort={sort} />
         <div className={styles.info}>
-          <table>
-            <thead>
-              <tr>
-                <th colSpan={6} className={styles.table_head}>
-                  Основная информация
-                </th>
-              </tr>
-              <tr>
-                <th>ID номер</th>
-                <th>Телефона</th>
-                <th>Пол</th>
-                <th>Дата рождения</th>
-                <th>Метро</th>
-                <th>Адрес проживания</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>ID номер</td>
-                <td>Телефона</td>
-                <td>Пол</td>
-                <td>Дата рождения sdfsfsfsdfsdfsdfsdfds</td>
-                <td>Метро</td>
-                <td>Адрес проживания</td>
-              </tr>
-              <tr>
-                <td>ID номер</td>
-                <td>Телефона</td>
-                <td>Пол</td>
-                <td>Дата рождения sdfsfsfsdfsdfsdfsdfds</td>
-                <td>Метро</td>
-                <td>Адрес проживания</td>
-              </tr>
-            </tbody>
-          </table>
-          <table>
-            <thead>
-              <tr>
-                <th colSpan={2} className={styles.table_head}>
-                  Банковская информация
-                </th>
-              </tr>
-              <tr>
-                <th>Банк</th>
-                <th>Номер карта</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Банк</td>
-                <td>Номер карта</td>
-              </tr>
-            </tbody>
-          </table>
-          <table>
-            <thead>
-              <tr>
-                <th colSpan={11} className={styles.table_head}>
-                  Докумнты сотрудника
-                </th>
-              </tr>
-              <tr>
-                <th>Гражданство</th>
-                <th>Паспорт</th>
-                <th>Кем выдан</th>
-                <th>Срок действия</th>
-                <th>Место рождения</th>
-                <th>Адрес прописки</th>
-                <th>Патент</th>
-                <th>Срок действия</th>
-                <th>СНИЛС</th>
-                <th>ИНН</th>
-                <th>Мед. книжка</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Гражданство</td>
-                <td>Паспорт</td>
-                <td>Кем выдан</td>
-                <td>Срок действия</td>
-                <td>Место рождения</td>
-                <td>Адрес прописки</td>
-                <td>Патент</td>
-                <td>Срок действия</td>
-                <td>СНИЛС</td>
-                <td>ИНН</td>
-                <td>Мед. книжка</td>
-              </tr>
-            </tbody>
-          </table>
-          <table>
-            <thead>
-              <tr>
-                <th colSpan={6} className={styles.table_head}>
-                  Информация от HR
-                </th>
-              </tr>
-              <tr>
-                <th>Должность</th>
-                <th>Подразделение</th>
-                <th>Решение</th>
-                <th>Источник</th>
-                <th>Дата </th>
-                <th>Примечание</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Должность</td>
-                <td>Подразделение</td>
-                <td>Решение</td>
-                <td>Источник</td>
-                <td>Дата </td>
-                <td>Примечание</td>
-              </tr>
-            </tbody>
-          </table>
+          <TableInfo data={contacts} sortHandler={sortHandler} sort={sort} />
+          <TableBank data={contacts} sortHandler={sortHandler} sort={sort} />
+          <TableDocument
+            data={contacts}
+            sortHandler={sortHandler}
+            sort={sort}
+          />
+          <TableHR data={contacts} sortHandler={sortHandler} sort={sort} />
         </div>
       </div>
       <div className={styles.wrapper}>
-        <span className={styles.text}>показано 21-30 из 88 результатов</span>
-        <Pagination
+        <TableFooter
+          count={count}
           currentPage={currentPage}
-          countPages={10}
+          limit={limit}
           setCurrentPage={setCurrentPage}
+          setLimit={setLimit}
         />
-        <div className={styles.text}>
-          <span>отображать на странице</span>
-          <select>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-          </select>
-        </div>
       </div>
     </div>
   );

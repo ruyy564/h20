@@ -1,8 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './features';
-import Router from './Router';
+import { store } from './store';
+import Router from './route/Router';
 import './index.scss';
 
 const container = document.getElementById('root')!;

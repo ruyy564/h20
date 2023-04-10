@@ -9,7 +9,7 @@ import {
   ROUTE_TO_DIAGRAMM,
   ROUTE_TO_INFO,
   ROUTE_TO_SETTINGS,
-} from '../../Router/constants';
+} from '../../route/constants';
 import getClassNames from '../../helpers/getClassNames';
 
 import styles from './index.module.scss';
