@@ -10,6 +10,8 @@ https://ruyy564.github.io/h20/
 
 https://my-json-server.typicode.com/ruyy564/h20/
 
+PUT - employees/id
+
 GET - employees/
 
 Параметры:
@@ -24,7 +26,6 @@ _order - порядок сортировки
 
 q - поиск
 
-PUT - employees/id
 
 ## Запуска локально
 
