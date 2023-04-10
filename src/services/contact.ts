@@ -36,7 +36,7 @@ export const fetchContacts = createAsyncThunk<
           _order: order,
         },
       });
-      const count = response.headers['x-total-count'];
+      const count = Number(response.headers['x-total-count']);
 
       return {
         count,

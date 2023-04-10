@@ -58,7 +58,7 @@ function Table({
   }, [limit]);
 
   if (count === 0) {
-    return <div>Нет контактов</div>;
+    return <div className={styles.empty}>Нет контактов</div>;
   }
 
   const sortHandler = (e: React.MouseEvent) => {
