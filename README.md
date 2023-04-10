@@ -1,7 +1,7 @@
 # Страница "Общая база сотрудников"
 
 <div >
-  <img src="https://user-images.githubusercontent.com/87094243/230926625-df875916-4fb6-44e4-98b2-e5c263ca19f2.png" width="600" height="300">
+  <img src="https://user-images.githubusercontent.com/87094243/230926625-df875916-4fb6-44e4-98b2-e5c263ca19f2.png" width="700" height="600">
 </div>
 
 
