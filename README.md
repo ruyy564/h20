@@ -1,9 +1,6 @@
 # Страница "Общая база сотрудников"
 
-<div >
-  <img src="https://user-images.githubusercontent.com/87094243/230926625-df875916-4fb6-44e4-98b2-e5c263ca19f2.png" width="700" height="600">
-</div>
-
+![h20](https://user-images.githubusercontent.com/87094243/230927011-ccfc5bc8-5707-42b6-873c-c01299e4c0f0.png)
 
 ## Приложение доступно по адресу
 
