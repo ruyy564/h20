@@ -11,10 +11,15 @@ https://my-json-server.typicode.com/ruyy564/h20/
 GET - employees/
 
 Параметры:
+
 _limit - лимит
+
 _page - страница
+
 _sort - поле сотрировки
+
 _order - порядок сортировки
+
 q - поиск
 
 БД - db.json
