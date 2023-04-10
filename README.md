@@ -4,7 +4,7 @@
 
 https://ruyy564.github.io/h20/
 
-## Сервер (json server)
+## Сервер (json server) / БД - db.json
 
 https://my-json-server.typicode.com/ruyy564/h20/
 
@@ -22,7 +22,6 @@ _order - порядок сортировки
 
 q - поиск
 
-БД - db.json
 
 ## Запуска локально
 
