@@ -1,5 +1,5 @@
 import { type TabelDataProps } from '../';
-import getSortClasses from '../helpers/getSortClasses';
+import getSortClasses from '../../../helpers/getSortClasses';
 import {
   getContactId,
   getContactDocumentsCitizenship,
@@ -14,10 +14,13 @@ import {
   getContactDocumentsValidityPeriodPassport,
   getContactDocumentsValidityPeriodPatent,
 } from '../../../entities/contact/getters';
+import formatDate from '../../../helpers/formatDate';
 
 import styles from '../index.module.scss';
 
 function TableDocument({ data, sortHandler, sort }: TabelDataProps) {
+  const currentDay = new Date();
+
   return (
     <table>
       <thead>
@@ -29,7 +32,7 @@ function TableDocument({ data, sortHandler, sort }: TabelDataProps) {
 
         <tr>
           <th
-            className={getSortClasses('documents[citizenship]', sort)}
+            className={getSortClasses('documents[citizenship]', styles, sort)}
             onClick={sortHandler}
             data-sorting={'documents[citizenship]'}
           >
@@ -41,7 +44,7 @@ function TableDocument({ data, sortHandler, sort }: TabelDataProps) {
           <th>Место рождения</th>
           <th>Адрес прописки</th>
           <th
-            className={getSortClasses('documents[patent]', sort)}
+            className={getSortClasses('documents[patent]', styles, sort)}
             onClick={sortHandler}
             data-sorting={'documents[patent]'}
           >
@@ -58,17 +61,61 @@ function TableDocument({ data, sortHandler, sort }: TabelDataProps) {
           data.map((item) => {
             return (
               <tr key={getContactId(item)}>
-                <td>{getContactDocumentsCitizenship(item)}</td>
-                <td>{getContactDocumentsPassport(item)}</td>
-                <td>{getContactDocumentsRegistration(item)}</td>
-                <td>{getContactDocumentsValidityPeriodPassport(item)}</td>
-                <td>{getContactDocumentsPlaceOfBirth(item)}</td>
-                <td>{getContactDocumentsIssued(item)}</td>
-                <td>{getContactDocumentsPatent(item)}</td>
-                <td>{getContactDocumentsValidityPeriodPatent(item)}</td>
-                <td>{getContactDocumentsSnils(item)}</td>
-                <td>{getContactDocumentsInn(item)}</td>
-                <td>{getContactDocumentsMedicalBook(item)}</td>
+                <td>
+                  <span>{getContactDocumentsCitizenship(item)}</span>
+                </td>
+                <td>
+                  <span>{getContactDocumentsPassport(item)}</span>
+                </td>
+                <td>
+                  <span>{getContactDocumentsRegistration(item)}</span>
+                </td>
+                <td>
+                  <span
+                    className={
+                      currentDay.getTime() >
+                      new Date(
+                        getContactDocumentsValidityPeriodPassport(item)
+                      ).getTime()
+                        ? styles.invalidDate
+                        : ''
+                    }
+                  >
+                    {getContactDocumentsValidityPeriodPassport(item)}
+                  </span>
+                </td>
+                <td>
+                  <span>{getContactDocumentsPlaceOfBirth(item)}</span>
+                </td>
+                <td>
+                  <span>{getContactDocumentsIssued(item)}</span>
+                </td>
+                <td>
+                  <span>{getContactDocumentsPatent(item)}</span>
+                </td>
+                <td>
+                  <span
+                    className={
+                      currentDay.getTime() >
+                      new Date(
+                        getContactDocumentsValidityPeriodPatent(item)
+                      ).getTime()
+                        ? styles.invalidDate
+                        : ''
+                    }
+                  >
+                    {getContactDocumentsValidityPeriodPatent(item)}
+                  </span>
+                </td>
+                <td>
+                  <span>{getContactDocumentsSnils(item)}</span>
+                </td>
+                <td>
+                  <span>{getContactDocumentsInn(item)}</span>
+                </td>
+                <td>
+                  <span>{getContactDocumentsMedicalBook(item)}</span>
+                </td>
               </tr>
             );
           })}

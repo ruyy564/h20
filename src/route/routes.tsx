@@ -9,13 +9,13 @@ import {
   ROUTE_TO_INFO,
   ROUTE_TO_SETTINGS,
 } from './constants';
-import CommonEmployeeBasePage from '../pages/CommonEmployeeBasePage';
+import CommonEmployeeBasePageContainer from '../containers/CommonEmployeeBasePageContainer';
 import AnotherPage from '../pages/AnotherPage';
 
 export const publicRouter = createBrowserRouter([
   {
     path: ROUTE_TO_COMMON_EMPLOYEE_BASE_PAGE,
-    element: <CommonEmployeeBasePage />,
+    element: <CommonEmployeeBasePageContainer />,
   },
   {
     path: ROUTE_TO_SETTINGS,

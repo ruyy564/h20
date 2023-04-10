@@ -44,6 +44,15 @@
 table{
     display:block;
 
+    & td input{
+        width:100%;
+        border-bottom: 1.5px solid var(--light-blue);
+    }
+
+    & td:hover:has(input) {
+        color: var(--light-blue);
+    }
+
     & th {
         font-weight: 700;
         color: var(--green);
@@ -56,9 +65,13 @@ table{
         text-align: left;
     }
 
+    & td span {
+        padding: 5px;
+    }
+
     & td:hover{
         color:var(--green);
-        cursor: pointer;
+        cursor: default;
     }
 
     .info & {
@@ -130,4 +143,18 @@ table{
         display: block;
         width:148px;
     }
+  }
+
+  .invalidDate{
+    color:var(--red);
+    border-radius: 4px;
+    
+  }
+
+  .invalidDate:hover{
+    color:var(--white);
+    background:var(--red);
+    border: 1.5px solid var(--red);
+    width: 64px;
+    height: 24px;
   }

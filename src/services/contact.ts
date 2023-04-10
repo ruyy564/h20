@@ -17,6 +17,10 @@ export type FetchData = {
   count: number;
 };
 
+export type UpdateDate = {
+  contacts: Contact[];
+};
+
 export const fetchContacts = createAsyncThunk<
   FetchData,
   FetchContactsParams,
@@ -49,3 +53,31 @@ export const fetchContacts = createAsyncThunk<
     }
   }
 );
+
+export const updateContacts = createAsyncThunk<
+  UpdateDate,
+  UpdateDate,
+  {
+    rejectValue: any;
+  }
+>('contact/updateContacts', async ({ contacts }, thunkAPI) => {
+  try {
+    const response = await Promise.all(
+      contacts.map(async (item) => {
+        const contact = await $api.put<Contact>(`/employees/${item.id}`, {
+          ...item,
+        });
+
+        return contact.data;
+      })
+    );
+
+    return {
+      contacts: response,
+    };
+  } catch (e) {
+    const error = e as AxiosError<{ message: string }>;
+
+    return thunkAPI.rejectWithValue(error.response?.data.message);
+  }
+});

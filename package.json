@@ -2,6 +2,7 @@
   "name": "h20",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ruyy564.github.io/h20",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.5",
@@ -32,7 +33,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch db.json -p 3001"
+    "server": "json-server --watch db.json -p 3001",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +57,7 @@
   },
   "devDependencies": {
     "@types/react-js-pagination": "^3.0.4",
+    "gh-pages": "^5.0.0",
     "sass": "^1.61.0",
     "typescript-plugin-css-modules": "^5.0.0"
   }

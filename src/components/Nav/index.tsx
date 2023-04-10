@@ -15,25 +15,19 @@ import styles from './index.module.scss';
 
 function Nav() {
   return (
-    <nav className={styles.nav}>
-      <IconLogo />
-      <IconCalendar />
-      <IconCard />
-      <IconInfo />
-      <IconPeople />
-      <IconDataBase />
-      <IconDiagram />
-      <IconSettings />
-    </nav>
-  );
-}
-
-function NavWrapper() {
-  return (
     <div className={styles.root}>
-      <Nav />
+      <nav className={styles.nav}>
+        <IconLogo />
+        <IconCalendar />
+        <IconCard />
+        <IconInfo />
+        <IconPeople />
+        <IconDataBase />
+        <IconDiagram />
+        <IconSettings />
+      </nav>
     </div>
   );
 }
 
-export default NavWrapper;
+export default Nav;

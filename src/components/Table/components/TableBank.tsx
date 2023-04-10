@@ -1,5 +1,5 @@
 import { type TabelDataProps } from '../';
-import getSortClasses from '../helpers/getSortClasses';
+import getSortClasses from '../../../helpers/getSortClasses';
 import {
   getContactBankName,
   getContactBankCard,
@@ -19,7 +19,7 @@ function TableBank({ data, sortHandler, sort }: TabelDataProps) {
         </tr>
         <tr>
           <th
-            className={getSortClasses('bank[name]', sort)}
+            className={getSortClasses('bank[name]', styles, sort)}
             onClick={sortHandler}
             data-sorting={'bank[name]'}
           >

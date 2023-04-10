@@ -8,3 +8,7 @@ export enum ORDER {
   ASC = 'asc',
   DESC = 'desc',
 }
+
+export type Styles = {
+  readonly [key: string]: string;
+};

@@ -1,5 +1,5 @@
 import { type TabelDataProps } from '../';
-import getSortClasses from '../helpers/getSortClasses';
+import getSortClasses from '../../../helpers/getSortClasses';
 import {
   getContactId,
   getContactAdress,
@@ -11,7 +11,7 @@ import {
 
 import styles from '../index.module.scss';
 
-function TableInfo({ data, sortHandler, sort }: TabelDataProps) {
+function TableInfo({ data, sort, isEdit, sortHandler }: TabelDataProps) {
   return (
     <table>
       <thead>
@@ -24,7 +24,7 @@ function TableInfo({ data, sortHandler, sort }: TabelDataProps) {
           <th>ID номер</th>
           <th>Телефона</th>
           <th
-            className={getSortClasses('gender', sort)}
+            className={getSortClasses('gender', styles, sort)}
             onClick={sortHandler}
             data-sorting={'gender'}
           >
@@ -32,7 +32,7 @@ function TableInfo({ data, sortHandler, sort }: TabelDataProps) {
           </th>
           <th>Дата рождения</th>
           <th
-            className={getSortClasses('metro', sort)}
+            className={getSortClasses('metro', styles, sort)}
             onClick={sortHandler}
             data-sorting={'metro'}
           >
@@ -44,6 +44,18 @@ function TableInfo({ data, sortHandler, sort }: TabelDataProps) {
       <tbody>
         {data &&
           data.map((item) => {
+            if (isEdit) {
+              return (
+                <tr key={getContactId(item)}>
+                  <td>{getContactId(item)}</td>
+                  <td>{getContactPhone(item)}</td>
+                  <td>{getContactGender(item)}</td>
+                  <td>{getContactBirthday(item)}</td>
+                  <td>{getContactMetro(item)}</td>
+                  <td>{getContactAdress(item)}</td>
+                </tr>
+              );
+            }
             return (
               <tr key={getContactId(item)}>
                 <td>{getContactId(item)}</td>

@@ -4,14 +4,34 @@ import Search from '../Search';
 import { Button } from '../Button';
 
 import styles from './index.module.scss';
+import { Contact } from '../../entities/contact';
 
 type Props = {
+  editData: Contact[] | null;
   count: number;
   search: string;
+  isEdit: boolean;
+  updateContacts: (contacts: Contact[]) => void;
+  setIsEdit: () => void;
   setSearch: (search: string) => void;
 };
 
-function Panel({ count, search, setSearch }: Props) {
+function Panel({
+  editData,
+  count,
+  search,
+  isEdit,
+  updateContacts,
+  setIsEdit,
+  setSearch,
+}: Props) {
+  const updateDataHandler = () => {
+    if (editData) {
+      updateContacts(editData);
+      setIsEdit();
+    }
+  };
+
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
@@ -21,7 +41,14 @@ function Panel({ count, search, setSearch }: Props) {
         </div>
         <Search search={search} setSearch={setSearch} />
       </div>
-      <Button onClick={() => {}} text={'Режим редактирования'} />
+      {isEdit ? (
+        <div className={styles.button_group}>
+          <Button onClick={updateDataHandler} text={'Сохранить'} />
+          <Button onClick={setIsEdit} text={'Отменить'} />
+        </div>
+      ) : (
+        <Button onClick={setIsEdit} text={'Режим редактирования'} />
+      )}
     </div>
   );
 }

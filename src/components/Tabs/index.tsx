@@ -1,9 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 
-import getClassNames from '../../helpers/getClassNames';
+import useTab from '../../hooks/useTab';
 
 import styles from './index.module.scss';
+
+type Content = {
+  to: string;
+  text: string;
+};
 
 type TabProps = {
   to: string;
@@ -12,25 +17,12 @@ type TabProps = {
   scrollHandler: (del: number) => void;
 };
 
-type Content = {
-  to: string;
-  text: string;
-};
-
 type TapsProps = {
   content: Content[];
 };
 
 function Tab({ to, text, rank, scrollHandler }: TabProps) {
-  const { pathname } = useLocation();
-  const className =
-    pathname === to ? getClassNames(styles.active, styles.tab) : styles.tab;
-
-  useEffect(() => {
-    if (pathname === to) {
-      scrollHandler(rank);
-    }
-  }, [pathname, rank, scrollHandler, to]);
+  const { className } = useTab({ to, rank, scrollHandler, styles });
 
   return (
     <NavLink to={to} className={className}>

@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { Contact } from '../../entities/contact';
-import { ORDER, STATUS } from '../../constants';
+import { STATUS } from '../../constants';
 import TableFooter from './components/TableFooter';
 import TableBank from './components/TableBank';
 import TableDocument from './components/TableDocument';
 import TableInfo from './components/TableInfo';
 import TableHR from './components/TableHR';
 import TableEmployee from './components/TableEmployee';
-import makeOrderASC from './helpers/makeOrderASC';
-import makeOrderDESC from './helpers/makeOrderDESC';
+import useTable from '../../hooks/useTable';
 
 import styles from './index.module.scss';
 
 type Props = {
-  contacts: Contact[] | null;
+  editData: Contact[] | null;
   status: STATUS | null;
   errorMessage: string | null;
   count: number;
   search: string;
+  isEdit: boolean;
+  setEditData: React.Dispatch<React.SetStateAction<Contact[] | null>>;
+  setIsEdit: () => void;
   fetchContacts: (
     page: number,
     limit: number,
@@ -31,69 +33,77 @@ type Props = {
 export type TabelDataProps = {
   data: Contact[] | null;
   sort: string;
-  sortHandler: (
-    e: React.MouseEvent<HTMLTableHeaderCellElement, MouseEvent>
+  isEdit?: boolean;
+  changeHandler: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    item: Contact
   ) => void;
+  sortHandler: (e: React.MouseEvent) => void;
 };
 
 function Table({
-  contacts,
+  editData,
   search,
+  isEdit,
   status,
   errorMessage,
   count,
+  setEditData,
   fetchContacts,
 }: Props) {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [limit, setLimit] = useState(5);
-  const [sort, setSort] = useState('');
-  const [order, setOrder] = useState(ORDER.ASC);
-
-  useEffect(() => {
-    fetchContacts(currentPage + 1, limit, sort, order, search);
-  }, [limit, currentPage, sort, order, fetchContacts, search]);
-
-  useEffect(() => {
-    setCurrentPage(0);
-  }, [limit]);
+  const {
+    changeHandler,
+    sortHandler,
+    sort,
+    currentPage,
+    limit,
+    setCurrentPage,
+    setLimit,
+  } = useTable({ fetchContacts, search, isEdit, setEditData, styles });
 
   if (count === 0) {
     return <div className={styles.empty}>Нет контактов</div>;
   }
 
-  const sortHandler = (e: React.MouseEvent) => {
-    const elem = e.currentTarget;
-    const valueSort = elem.getAttribute('data-sorting');
-    const isSortASC = elem.classList.contains(styles.is_sortASC);
-
-    if (sort === valueSort) {
-      if (isSortASC) {
-        setOrder(ORDER.DESC);
-        makeOrderDESC(elem);
-      } else {
-        setOrder(ORDER.ASC);
-        makeOrderASC(elem);
-      }
-    } else {
-      setSort(valueSort || '');
-      setOrder(ORDER.DESC);
-      makeOrderDESC(elem);
-    }
-  };
-
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
-        <TableEmployee data={contacts} sortHandler={sortHandler} sort={sort} />
+        <TableEmployee
+          data={editData}
+          changeHandler={changeHandler}
+          isEdit={isEdit}
+          sortHandler={sortHandler}
+          sort={sort}
+        />
         <div className={styles.info}>
-          <TableInfo data={contacts} sortHandler={sortHandler} sort={sort} />
-          <TableBank data={contacts} sortHandler={sortHandler} sort={sort} />
-          <TableDocument
-            data={contacts}
+          <TableInfo
+            data={editData}
             sortHandler={sortHandler}
             sort={sort}
+            changeHandler={changeHandler}
+            isEdit={isEdit}
           />
-          <TableHR data={contacts} sortHandler={sortHandler} sort={sort} />
+          <TableBank
+            data={editData}
+            sortHandler={sortHandler}
+            sort={sort}
+            changeHandler={changeHandler}
+            isEdit={isEdit}
+          />
+          <TableDocument
+            data={editData}
+            sortHandler={sortHandler}
+            sort={sort}
+            changeHandler={changeHandler}
+            isEdit={isEdit}
+          />
+          <TableHR
+            data={editData}
+            sortHandler={sortHandler}
+            sort={sort}
+            changeHandler={changeHandler}
+            isEdit={isEdit}
+          />
         </div>
       </div>
       <div className={styles.wrapper}>

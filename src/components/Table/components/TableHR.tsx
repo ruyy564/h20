@@ -1,5 +1,5 @@
 import { type TabelDataProps } from '../';
-import getSortClasses from '../helpers/getSortClasses';
+import getSortClasses from '../../../helpers/getSortClasses';
 
 import {
   getContactId,
@@ -24,21 +24,21 @@ function TableHR({ data, sortHandler, sort }: TabelDataProps) {
         </tr>
         <tr>
           <th
-            className={getSortClasses('hrInfo[post]', sort)}
+            className={getSortClasses('hrInfo[post]', styles, sort)}
             onClick={sortHandler}
             data-sorting={'hrInfo[post]'}
           >
             Должность
           </th>
           <th
-            className={getSortClasses('hrInfo[division]', sort)}
+            className={getSortClasses('hrInfo[division]', styles, sort)}
             onClick={sortHandler}
             data-sorting={'hrInfo[division]'}
           >
             Подразделение
           </th>
           <th
-            className={getSortClasses('hrInfo[solution]', sort)}
+            className={getSortClasses('hrInfo[solution]', styles, sort)}
             onClick={sortHandler}
             data-sorting={'hrInfo[solution]'}
           >

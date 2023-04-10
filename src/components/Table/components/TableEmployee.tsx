@@ -1,6 +1,6 @@
 import { type TabelDataProps } from '../';
 
-import getSortClasses from '../helpers/getSortClasses';
+import getSortClasses from '../../../helpers/getSortClasses';
 import {
   getContactId,
   getContactName,
@@ -8,7 +8,13 @@ import {
 
 import styles from '../index.module.scss';
 
-function TableEmployee({ data, sortHandler, sort }: TabelDataProps) {
+function TableEmployee({
+  data,
+  sortHandler,
+  changeHandler,
+  sort,
+  isEdit,
+}: TabelDataProps) {
   return (
     <table className={styles.table_employee}>
       <thead>
@@ -16,7 +22,7 @@ function TableEmployee({ data, sortHandler, sort }: TabelDataProps) {
           <th rowSpan={2}>№</th>
           <th
             rowSpan={2}
-            className={getSortClasses('name', sort)}
+            className={getSortClasses('name', styles, sort)}
             onClick={sortHandler}
             data-sorting={'name'}
           >
@@ -31,6 +37,22 @@ function TableEmployee({ data, sortHandler, sort }: TabelDataProps) {
       <tbody>
         {data &&
           data.map((item, index) => {
+            if (isEdit) {
+              return (
+                <tr key={getContactId(item)}>
+                  <td>{index + 1}</td>
+                  <td>
+                    <input
+                      type="text"
+                      name="name"
+                      autoComplete="off"
+                      onChange={(e) => changeHandler(e, item)}
+                      value={getContactName(item)}
+                    />
+                  </td>
+                </tr>
+              );
+            }
             return (
               <tr key={getContactId(item)}>
                 <td>{index + 1}</td>

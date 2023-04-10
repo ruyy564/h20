@@ -1,6 +1,6 @@
-import styles from '../index.module.scss';
+import { Styles } from '../constants';
 
-const makeOrderDESC = (elem: Element) => {
+const makeOrderDESC = (elem: Element, styles: Styles) => {
   elem.classList.remove(styles.is_sortASC);
   elem.classList.add(styles.is_sortDESC);
 };

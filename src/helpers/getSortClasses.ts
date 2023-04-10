@@ -1,8 +1,7 @@
-import getClassNames from '../../../helpers/getClassNames';
+import getClassNames from './getClassNames';
+import { Styles } from '../constants';
 
-import styles from '../index.module.scss';
-
-const getSortClasses = (name: string, sort?: string) =>
+const getSortClasses = (name: string, styles: Styles, sort?: string) =>
   sort === name
     ? getClassNames(styles.sorting_block, styles.is_sortDESC, styles.active)
     : getClassNames(styles.sorting_block, styles.is_sortASC);

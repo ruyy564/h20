@@ -20,6 +20,7 @@
   --non-active:#D2D1D1;
   --gray-blue: #989FA3;
   --table-line:rgba(229, 248, 246, 0.5);
+  --red:#FC5C65;
 }
 
 #root,html,body{
@@ -97,12 +98,10 @@ input:focus {
   border-radius: 4px;       
 }
 
-select{
-  padding: 5px 0;
-  border:none;
-  outline: none; 
-  cursor: pointer;
+select {
   color:var(--dark-blue);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 0;
 }
-
-
