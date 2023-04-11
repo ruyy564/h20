@@ -1,18 +1,18 @@
 # Страница "Общая база сотрудников"
 
-![h20](https://user-images.githubusercontent.com/87094243/230927011-ccfc5bc8-5707-42b6-873c-c01299e4c0f0.png)
+![h20](https://user-images.githubusercontent.com/87094243/231112728-a5120697-41cd-43ec-ac8c-2d338b39d36a.png)
 
-## Приложение доступно по адресу
+## Приложение доступно по адресу https://ruyy564.github.io/h20/
 
-https://ruyy564.github.io/h20/
+## Сервер (json server) https://my-json-server.typicode.com/ruyy564/h20/
 
-## Сервер (json server) / БД - db.json
+БД - db.json(так как бд находится в репозитории, то запросы на изменение данных не будут на нее действовать)
 
-https://my-json-server.typicode.com/ruyy564/h20/
+## Методы
 
-PUT - employees/id
+### PUT - employees/id
 
-GET - employees/
+### GET - employees/
 
 Параметры:
 
