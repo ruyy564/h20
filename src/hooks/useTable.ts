@@ -73,7 +73,6 @@ const useTable = ({
 
     if (isDate) {
       value = formatDate(value);
-      console.log(value);
     }
     setEditData(
       (prev) =>
