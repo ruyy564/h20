@@ -58,7 +58,7 @@ table{
     & td select{
         color: var(--dark-blue);
     }
-    
+
     & td:hover:has(input) {
         color: var(--light-blue);
     }
@@ -146,12 +146,14 @@ table{
   }
 
   .table_employee{
-    width:250px;
+    min-width:250px;
+    max-width:250px;
+
     overflow: hidden;
 
     & td:nth-child(2){
         display: inline-block;
-        width:154px;
+        width:195px;
         height: 37px;
         text-overflow: ellipsis;
         overflow: hidden;

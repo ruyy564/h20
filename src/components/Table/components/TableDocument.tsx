@@ -25,7 +25,12 @@ function TableDocument({
   isEdit,
   changeHandler,
 }: TabelDataProps) {
-  const currentDay = new Date();
+  const classNameData = (data: string) => {
+    return new Date().getTime() > new Date(formatDateForInput(data)).getTime()
+      ? styles.invalidDate
+      : '';
+  };
+
   const entity = 'documents';
 
   return (
@@ -188,14 +193,9 @@ function TableDocument({
                 </td>
                 <td>
                   <span
-                    className={
-                      currentDay.getTime() >
-                      new Date(
-                        getContactDocumentsValidityPeriodPassport(item)
-                      ).getTime()
-                        ? styles.invalidDate
-                        : ''
-                    }
+                    className={classNameData(
+                      getContactDocumentsValidityPeriodPassport(item)
+                    )}
                   >
                     {getContactDocumentsValidityPeriodPassport(item)}
                   </span>
@@ -211,14 +211,9 @@ function TableDocument({
                 </td>
                 <td>
                   <span
-                    className={
-                      currentDay.getTime() >
-                      new Date(
-                        getContactDocumentsValidityPeriodPatent(item)
-                      ).getTime()
-                        ? styles.invalidDate
-                        : ''
-                    }
+                    className={classNameData(
+                      getContactDocumentsValidityPeriodPatent(item)
+                    )}
                   >
                     {getContactDocumentsValidityPeriodPatent(item)}
                   </span>
