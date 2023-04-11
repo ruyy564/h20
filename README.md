@@ -2,9 +2,7 @@
 
 ![h20](https://user-images.githubusercontent.com/87094243/231112728-a5120697-41cd-43ec-ac8c-2d338b39d36a.png)
 
-## Приложение доступно по адресу
-
-https://ruyy564.github.io/h20/
+## Приложение доступно по адресу https://ruyy564.github.io/h20/
 
 ## Сервер (json server) https://my-json-server.typicode.com/ruyy564/h20/
 
