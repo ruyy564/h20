@@ -82,13 +82,14 @@ function TableHR({
                     />
                   </td>
                   <td>
-                    <input
-                      type="text"
+                    <select
                       name="solution"
-                      autoComplete="off"
                       onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactHrInfoSolution(item)}
-                    />
+                    >
+                      <option value="Принят">Принят</option>
+                      <option value="Отказ">Отказ</option>
+                    </select>
                   </td>
                   <td>
                     <input

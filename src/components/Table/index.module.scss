@@ -44,13 +44,21 @@
 
 table{
     display:block;
-
+    height: 100%;
+    border-collapse: collapse;
+    
     & td input{
         min-width:80px;
+        height: 15px;
         width: 100%;
-        border-bottom: 1.5px solid var(--light-blue);
+        color: var(--dark-blue);
+
     }
 
+    & td select{
+        color: var(--dark-blue);
+    }
+    
     & td:hover:has(input) {
         color: var(--light-blue);
     }
@@ -142,8 +150,12 @@ table{
     overflow: hidden;
 
     & td:nth-child(2){
-        display: block;
-        width:148px;
+        display: inline-block;
+        width:154px;
+        height: 37px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding:11px  0px 11px 17px;
     }
   }
 

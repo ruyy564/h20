@@ -36,7 +36,7 @@ export type TabelDataProps = {
   sort: string;
   isEdit?: boolean;
   changeHandler: (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
     item: Contact,
     entities?: keyof Contact
   ) => void;

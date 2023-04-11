@@ -63,7 +63,7 @@ const useTable = ({
   };
 
   const changeHandler = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
     item: Contact,
     entities?: keyof Contact
   ) => {

@@ -65,13 +65,14 @@ function TableInfo({
                     />
                   </td>
                   <td>
-                    <input
-                      type="text"
+                    <select
                       name="gender"
-                      autoComplete="off"
                       onChange={(e) => changeHandler(e, item)}
                       value={getContactGender(item)}
-                    />
+                    >
+                      <option value="Женский">Женский</option>
+                      <option value="Мужской">Мужской</option>
+                    </select>
                   </td>
                   <td>
                     <input
