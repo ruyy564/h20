@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import styles from './index.module.scss';
 
@@ -11,7 +11,7 @@ type ButtonProps = {
   onClick: () => void;
 };
 
-export function ButtonArrowLeft({ onClick }: Props) {
+export const ButtonArrowLeft = memo(({ onClick }: Props) => {
   return (
     <button className={styles.btn_arrow} onClick={onClick}>
       <svg viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,9 +22,9 @@ export function ButtonArrowLeft({ onClick }: Props) {
       </svg>
     </button>
   );
-}
+});
 
-export function ButtonArrowRight({ onClick }: Props) {
+export const ButtonArrowRight = memo(({ onClick }: Props) => {
   return (
     <button className={styles.btn_arrow} onClick={onClick}>
       <svg viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,12 +35,12 @@ export function ButtonArrowRight({ onClick }: Props) {
       </svg>
     </button>
   );
-}
+});
 
-export function Button({ onClick, text }: ButtonProps) {
+export const Button = memo(({ onClick, text }: ButtonProps) => {
   return (
     <button className={styles.btn} onClick={onClick}>
       {text}
     </button>
   );
-}
+});

@@ -1,6 +1,5 @@
 import { type TabelDataProps } from '../';
 import getSortClasses from '../../../helpers/getSortClasses';
-
 import {
   getContactId,
   getContactHrInfoDate,
@@ -10,6 +9,7 @@ import {
   getContactHrInfoSolution,
   getContactHrInfoSource,
 } from '../../../entities/contact/getters';
+import { formatDateForInput } from '../../../helpers/formatDate';
 
 import styles from '../index.module.scss';
 
@@ -20,6 +20,8 @@ function TableHR({
   isEdit,
   changeHandler,
 }: TabelDataProps) {
+  const entity = 'hrInfo';
+
   return (
     <table>
       <thead>
@@ -30,23 +32,23 @@ function TableHR({
         </tr>
         <tr>
           <th
-            className={getSortClasses('hrInfo[post]', styles, sort)}
+            className={getSortClasses(`${entity}[post]`, styles, sort)}
             onClick={sortHandler}
-            data-sorting={'hrInfo[post]'}
+            data-sorting={`${entity}[post]`}
           >
             Должность
           </th>
           <th
-            className={getSortClasses('hrInfo[division]', styles, sort)}
+            className={getSortClasses(`${entity}[division]`, styles, sort)}
             onClick={sortHandler}
-            data-sorting={'hrInfo[division]'}
+            data-sorting={`${entity}[division]`}
           >
             Подразделение
           </th>
           <th
-            className={getSortClasses('hrInfo[solution]', styles, sort)}
+            className={getSortClasses(`${entity}[solution]`, styles, sort)}
             onClick={sortHandler}
-            data-sorting={'hrInfo[solution]'}
+            data-sorting={`${entity}[solution]`}
           >
             Решение
           </th>
@@ -64,60 +66,54 @@ function TableHR({
                   <td>
                     <input
                       type="text"
-                      data-main="hrInfo"
                       name="post"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactHrInfoPost(item)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="hrInfo"
                       name="division"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactHrInfoDivision(item)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="hrInfo"
                       name="solution"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactHrInfoSolution(item)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="hrInfo"
                       name="source"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactHrInfoSource(item)}
                     />
                   </td>
                   <td>
                     <input
-                      type="text"
-                      data-main="hrInfo"
+                      type="date"
                       name="date"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
-                      value={getContactHrInfoDate(item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
+                      value={formatDateForInput(getContactHrInfoDate(item))}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="hrInfo"
                       name="note"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactHrInfoNote(item)}
                     />
                   </td>

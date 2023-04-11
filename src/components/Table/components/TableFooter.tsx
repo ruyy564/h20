@@ -1,4 +1,5 @@
 import Pagination from '../../Pagination';
+import getFooterTableInfo from '../../../helpers/getFooterTableInfo';
 
 import styles from '../index.module.scss';
 
@@ -17,17 +18,9 @@ function TableFooter({
   setCurrentPage,
   setLimit,
 }: TableFooterProps) {
-  const countPage = Math.ceil(count / limit);
-  const deltaCount = count - (countPage - 1) * limit;
-  const startShowCount = (currentPage + 1) * limit - limit + 1;
-  const endShowCount =
-    currentPage + 1 === countPage
-      ? startShowCount + deltaCount - 1
-      : startShowCount + limit - 1;
+  const { countPage, endShowCount, selectHandler, startShowCount } =
+    getFooterTableInfo({ count, limit, setLimit, currentPage });
 
-  const selectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLimit(Number(e.target.value));
-  };
   return (
     <>
       <span className={styles.text}>

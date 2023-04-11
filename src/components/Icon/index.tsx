@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import {
@@ -31,7 +31,7 @@ function Icon({ link, children }: Props) {
   );
 }
 
-export function IconCalendar() {
+export const IconCalendar = memo(() => {
   return (
     <Icon link={ROUTE_TO_CALENDAR}>
       <svg viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,9 +42,9 @@ export function IconCalendar() {
       </svg>
     </Icon>
   );
-}
+});
 
-export function IconCard() {
+export const IconCard = memo(() => {
   return (
     <Icon link={ROUTE_TO_CARD}>
       <svg viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,9 +55,9 @@ export function IconCard() {
       </svg>
     </Icon>
   );
-}
+});
 
-export function IconInfo() {
+export const IconInfo = memo(() => {
   return (
     <Icon link={ROUTE_TO_INFO}>
       <svg viewBox="0 0 33 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,9 +68,9 @@ export function IconInfo() {
       </svg>
     </Icon>
   );
-}
+});
 
-export function IconPeople() {
+export const IconPeople = memo(() => {
   return (
     <Icon link={ROUTE_TO_COMMON_EMPLOYEE_BASE_PAGE}>
       <svg viewBox="0 0 42 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,9 +81,9 @@ export function IconPeople() {
       </svg>
     </Icon>
   );
-}
+});
 
-export function IconDataBase() {
+export const IconDataBase = memo(() => {
   return (
     <Icon link={ROUTE_TO_DATA_BASE}>
       <svg viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -94,9 +94,9 @@ export function IconDataBase() {
       </svg>
     </Icon>
   );
-}
+});
 
-export function IconDiagram() {
+export const IconDiagram = memo(() => {
   return (
     <Icon link={ROUTE_TO_DIAGRAMM}>
       <svg viewBox="0 0 37 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -107,9 +107,9 @@ export function IconDiagram() {
       </svg>
     </Icon>
   );
-}
+});
 
-export function IconSettings() {
+export const IconSettings = memo(() => {
   return (
     <Icon link={ROUTE_TO_SETTINGS}>
       <svg viewBox="0 0 31 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -120,9 +120,9 @@ export function IconSettings() {
       </svg>
     </Icon>
   );
-}
+});
 
-export function IconArrowTop() {
+export const IconArrowTop = memo(() => {
   return (
     <div className={styles.iconArrowTop}>
       <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -133,9 +133,9 @@ export function IconArrowTop() {
       </svg>
     </div>
   );
-}
+});
 
-export function IconArrowDown() {
+export const IconArrowDown = memo(() => {
   return (
     <div className={styles.iconArrowDown}>
       <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -146,9 +146,9 @@ export function IconArrowDown() {
       </svg>
     </div>
   );
-}
+});
 
-export function IconLogo() {
+export const IconLogo = memo(() => {
   return (
     <div>
       <svg
@@ -181,9 +181,9 @@ export function IconLogo() {
       </svg>
     </div>
   );
-}
+});
 
-export function IconSearch() {
+export const IconSearch = memo(() => {
   return (
     <div className={styles.search}>
       <svg viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -194,9 +194,9 @@ export function IconSearch() {
       </svg>
     </div>
   );
-}
+});
 
-export function IconArrowLeft() {
+export const IconArrowLeft = memo(() => {
   return (
     <div className={styles.iconArrowLeft}>
       <svg
@@ -210,9 +210,9 @@ export function IconArrowLeft() {
       </svg>
     </div>
   );
-}
+});
 
-export function IconArrowRight() {
+export const IconArrowRight = memo(() => {
   return (
     <div className={styles.iconArrowRight}>
       <svg
@@ -229,4 +229,4 @@ export function IconArrowRight() {
       </svg>
     </div>
   );
-}
+});

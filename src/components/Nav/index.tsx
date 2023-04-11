@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import {
   IconCalendar,
@@ -30,4 +30,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default memo(Nav);

@@ -1,0 +1,53 @@
+.root {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: 0.5s;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+
+    &.active{
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+.loader {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+
+    &:after{
+        content: " ";
+        position: absolute;
+        display: block;
+        width: 34px;
+        height: 34px;
+        margin: 8px;
+        border-radius: 50%;
+        animation: loader 1s linear infinite;
+        border: 6px solid var(--dark-blue);
+        border-color: var(--dark-blue) transparent var(--dark-blue) transparent;
+    }
+}
+
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

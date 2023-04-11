@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import {
@@ -45,23 +46,23 @@ const useNavHeader = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const onClickRightHandler = () => {
+  const onClickRightHandler = useCallback(() => {
     for (let i = 0; i < content.length - 1; i++) {
       if (content[i].to === pathname) {
         navigate(content[i + 1].to);
         break;
       }
     }
-  };
+  }, [navigate, pathname]);
 
-  const onClickLeftHandler = () => {
+  const onClickLeftHandler = useCallback(() => {
     for (let i = 1; i < content.length; i++) {
       if (content[i].to === pathname) {
         navigate(content[i - 1].to);
         break;
       }
     }
-  };
+  }, [navigate, pathname]);
 
   return { onClickRightHandler, onClickLeftHandler };
 };

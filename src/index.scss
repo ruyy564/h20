@@ -98,10 +98,15 @@ input:focus {
   border-radius: 4px;       
 }
 
+
 select {
   color:var(--dark-blue);
   outline: none;
   border: none;
   cursor: pointer;
-  padding: 5px 0;
+  -webkit-appearance: none;
+  padding-right: 20px; 
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 15 15"><path d="M 8,5.5 11,9.5 14,5.5 z"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: center right;
 }

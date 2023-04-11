@@ -14,7 +14,7 @@ import {
   getContactDocumentsValidityPeriodPassport,
   getContactDocumentsValidityPeriodPatent,
 } from '../../../entities/contact/getters';
-import formatDate from '../../../helpers/formatDate';
+import { formatDateForInput } from '../../../helpers/formatDate';
 
 import styles from '../index.module.scss';
 
@@ -26,6 +26,7 @@ function TableDocument({
   changeHandler,
 }: TabelDataProps) {
   const currentDay = new Date();
+  const entity = 'documents';
 
   return (
     <table>
@@ -38,9 +39,9 @@ function TableDocument({
 
         <tr>
           <th
-            className={getSortClasses('documents[citizenship]', styles, sort)}
+            className={getSortClasses(`${entity}[citizenship]`, styles, sort)}
             onClick={sortHandler}
-            data-sorting={'documents[citizenship]'}
+            data-sorting={`${entity}[citizenship]`}
           >
             Гражданство
           </th>
@@ -50,9 +51,9 @@ function TableDocument({
           <th>Место рождения</th>
           <th>Адрес прописки</th>
           <th
-            className={getSortClasses('documents[patent]', styles, sort)}
+            className={getSortClasses(`${entity}[patent]`, styles, sort)}
             onClick={sortHandler}
-            data-sorting={'documents[patent]'}
+            data-sorting={`${entity}[patent]`}
           >
             Патент
           </th>
@@ -71,110 +72,103 @@ function TableDocument({
                   <td>
                     <input
                       type="text"
-                      data-main="documents"
                       name="citizenship"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactDocumentsCitizenship(item)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="documents"
                       name="passport"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactDocumentsPassport(item)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="documents"
                       name="registration"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactDocumentsRegistration(item)}
                     />
                   </td>
                   <td>
                     <input
-                      type="text"
-                      data-main="documents"
+                      type="date"
                       name="validityPeriodPassport"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
-                      value={getContactDocumentsValidityPeriodPassport(item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
+                      value={formatDateForInput(
+                        getContactDocumentsValidityPeriodPassport(item)
+                      )}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="documents"
                       name="placeOfBirth"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactDocumentsPlaceOfBirth(item)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="documents"
                       name="issued"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactDocumentsIssued(item)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="documents"
                       name="patent"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactDocumentsPatent(item)}
                     />
                   </td>
                   <td>
                     <input
-                      type="text"
-                      data-main="documents"
+                      type="date"
                       name="validityPeriodPatent"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
-                      value={getContactDocumentsValidityPeriodPatent(item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
+                      value={formatDateForInput(
+                        getContactDocumentsValidityPeriodPatent(item)
+                      )}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="documents"
                       name="snils"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactDocumentsSnils(item)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="documents"
                       name="inn"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactDocumentsInn(item)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="documents"
                       name="medicalBook"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactDocumentsMedicalBook(item)}
                     />
                   </td>

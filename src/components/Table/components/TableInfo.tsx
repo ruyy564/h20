@@ -10,6 +10,7 @@ import {
 } from '../../../entities/contact/getters';
 
 import styles from '../index.module.scss';
+import { formatDateForInput } from '../../../helpers/formatDate';
 
 function TableInfo({
   data,
@@ -74,11 +75,11 @@ function TableInfo({
                   </td>
                   <td>
                     <input
-                      type="text"
+                      type="date"
                       name="birthday"
                       autoComplete="off"
                       onChange={(e) => changeHandler(e, item)}
-                      value={getContactBirthday(item)}
+                      value={formatDateForInput(getContactBirthday(item))}
                     />
                   </td>
                   <td>

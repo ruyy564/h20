@@ -1,14 +1,13 @@
-const formatDate = (date: Date) => {
-  let dd: number | string = date.getDate();
-  if (dd < 10) dd = '0' + dd;
+export const formatDateForInput = (s: string) => {
+  const [dd, mm, yy] = s.split('.');
 
-  let mm: number | string = date.getMonth() + 1;
-  if (mm < 10) mm = '0' + mm;
+  return `${yy}-${mm}-${dd}`;
+};
 
-  let yy: number | string = date.getFullYear() % 100;
-  if (yy < 10) yy = '0' + yy;
+const formatDate = (s: string) => {
+  const [yy, mm, dd] = s.split('-');
 
-  return dd + '.' + mm + '.' + yy;
+  return `${dd}.${mm}.${yy}`;
 };
 
 export default formatDate;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import Avatar from '../Avatar';
 import { IconArrowDown } from '../Icon';
@@ -22,4 +22,4 @@ function UserTab() {
   );
 }
 
-export default UserTab;
+export default memo(UserTab);

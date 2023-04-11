@@ -6,6 +6,7 @@ import { ORDER } from '../constants';
 import { Contact, Bank, Document, HRInfo } from '../entities/contact';
 import { getContactId } from '../entities/contact/getters';
 import { Styles } from '../constants';
+import formatDate from '../helpers/formatDate';
 
 type Props = {
   search: string;
@@ -63,27 +64,34 @@ const useTable = ({
 
   const changeHandler = (
     e: React.ChangeEvent<HTMLInputElement>,
-    item: Contact
+    item: Contact,
+    entities?: keyof Contact
   ) => {
-    const main = e.currentTarget.getAttribute('data-main') as keyof Contact;
+    const name = e.target.name;
+    const isDate = e.target.type === 'date';
+    let value = e.target.value;
 
+    if (isDate) {
+      value = formatDate(value);
+      console.log(value);
+    }
     setEditData(
       (prev) =>
         prev &&
         prev.map((el) => {
           if (el.id === getContactId(item)) {
-            if (main) {
-              const mainElem = el[main] as Bank | Document | HRInfo;
+            if (entities) {
+              const mainElem = el[entities] as Bank | Document | HRInfo;
 
               return {
                 ...el,
-                [main]: { ...mainElem, [e.target.name]: e.target.value },
+                [entities]: { ...mainElem, [name]: value },
               };
             }
 
             return {
               ...el,
-              [e.target.name]: e.target.value,
+              [name]: value,
             };
           }
 

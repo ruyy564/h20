@@ -1,14 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback, memo } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { content } from '../../hooks/useNavHeader';
 import useTab from '../../hooks/useTab';
 
 import styles from './index.module.scss';
-
-type Content = {
-  to: string;
-  text: string;
-};
 
 type TabProps = {
   to: string;
@@ -17,11 +13,7 @@ type TabProps = {
   scrollHandler: (del: number) => void;
 };
 
-type TapsProps = {
-  content: Content[];
-};
-
-function Tab({ to, text, rank, scrollHandler }: TabProps) {
+const Tab = memo(({ to, text, rank, scrollHandler }: TabProps) => {
   const { className } = useTab({ to, rank, scrollHandler, styles });
 
   return (
@@ -29,17 +21,17 @@ function Tab({ to, text, rank, scrollHandler }: TabProps) {
       {text}
     </NavLink>
   );
-}
+});
 
-function Tabs({ content }: TapsProps) {
+const Tabs = memo(() => {
   const ref = useRef<HTMLDivElement>(null);
 
-  const scrollHandler = (rank: number) => {
+  const scrollHandler = useCallback((rank: number) => {
     if (ref.current) {
       ref.current.scrollLeft =
         (ref.current.scrollWidth / content.length - 40) * rank;
     }
-  };
+  }, []);
 
   return (
     <div className={styles.root} ref={ref}>
@@ -54,6 +46,6 @@ function Tabs({ content }: TapsProps) {
       ))}
     </div>
   );
-}
+});
 
 export default Tabs;

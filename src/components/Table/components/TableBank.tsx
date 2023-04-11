@@ -15,6 +15,8 @@ function TableBank({
   isEdit,
   changeHandler,
 }: TabelDataProps) {
+  const entity = 'bank';
+
   return (
     <table>
       <thead>
@@ -25,9 +27,9 @@ function TableBank({
         </tr>
         <tr>
           <th
-            className={getSortClasses('bank[name]', styles, sort)}
+            className={getSortClasses(`${entity}[name]`, styles, sort)}
             onClick={sortHandler}
-            data-sorting={'bank[name]'}
+            data-sorting={`${entity}[name]`}
           >
             Банк
           </th>
@@ -43,20 +45,18 @@ function TableBank({
                   <td>
                     <input
                       type="text"
-                      data-main="bank"
                       name="name"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactBankName(item)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
-                      data-main="bank"
                       name="card"
                       autoComplete="off"
-                      onChange={(e) => changeHandler(e, item)}
+                      onChange={(e) => changeHandler(e, item, entity)}
                       value={getContactBankCard(item)}
                     />
                   </td>

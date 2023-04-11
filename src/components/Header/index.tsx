@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { ButtonArrowLeft, ButtonArrowRight } from '../Button';
 import Tabs from '../Tabs';
-import useNavHeader, { content } from '../../hooks/useNavHeader';
+import useNavHeader from '../../hooks/useNavHeader';
 import UserTab from '../UserTab';
 
 import styles from './index.module.scss';
@@ -18,7 +18,7 @@ function Header() {
             <ButtonArrowLeft onClick={onClickLeftHandler} />
             <ButtonArrowRight onClick={onClickRightHandler} />
           </div>
-          <Tabs content={content} />
+          <Tabs />
         </div>
         <UserTab />
       </div>
@@ -26,4 +26,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);

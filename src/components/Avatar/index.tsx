@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import styles from './index.module.scss';
 
@@ -10,4 +10,4 @@ function Avatar({ src }: Props) {
   return <img className={styles.root} src={src} alt="avatar" />;
 }
 
-export default Avatar;
+export default memo(Avatar);

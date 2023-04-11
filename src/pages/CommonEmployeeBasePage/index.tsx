@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-
+import useCommonEmployeeBasePage from '../../hooks/useCommonEmployeeBasePage';
 import Container from '../../components/Container';
 import PanelContainer from '../../containers/PanelContainer';
 import TableContainer from '../../containers/TableContainer';
@@ -12,17 +11,8 @@ type Props = {
 };
 
 function CommonEmployeeBasePage({ contacts }: Props) {
-  const [search, setSearch] = useState('');
-  const [isEdit, setIsEdit] = useState(false);
-  const [editData, setEditData] = useState(contacts);
-
-  useEffect(() => {
-    setEditData(contacts);
-  }, [contacts]);
-
-  const setEditHandler = () => {
-    setIsEdit((prev) => !prev);
-  };
+  const { editData, isEdit, search, setEditHandler, setSearch, setEditData } =
+    useCommonEmployeeBasePage(contacts);
 
   return (
     <Container>

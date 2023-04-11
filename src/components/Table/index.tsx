@@ -9,6 +9,7 @@ import TableInfo from './components/TableInfo';
 import TableHR from './components/TableHR';
 import TableEmployee from './components/TableEmployee';
 import useTable from '../../hooks/useTable';
+import Loader from '../Loader';
 
 import styles from './index.module.scss';
 
@@ -36,7 +37,8 @@ export type TabelDataProps = {
   isEdit?: boolean;
   changeHandler: (
     e: React.ChangeEvent<HTMLInputElement>,
-    item: Contact
+    item: Contact,
+    entities?: keyof Contact
   ) => void;
   sortHandler: (e: React.MouseEvent) => void;
 };
@@ -67,6 +69,7 @@ function Table({
 
   return (
     <div className={styles.root}>
+      <Loader status={status} />
       <div className={styles.wrapper}>
         <TableEmployee
           data={editData}
